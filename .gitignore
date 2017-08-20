@@ -1,0 +1,14 @@
+# build output
+dist
+
+# dependencies
+node_modules
+
+# logs
+*.log
+
+# OS
+.DS_Store
+
+# editor
+.idea

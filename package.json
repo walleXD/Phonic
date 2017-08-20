@@ -1,0 +1,52 @@
+{
+  "name": "nextelectron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.22.1",
+    "electron-webpack": "^0.14.2",
+    "eslint": "^4.5.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.2.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "next": "^3.0.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "rimraf": "^2.6.1",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "electron-next": "^3.1.1",
+    "electron-window-state": "^4.1.1",
+    "source-map-support": "^0.4.16"
+  },
+  "scripts": {
+    "test": "NODE_ENV=production electron dist/main/main.js/",
+    "dev": "electron-webpack dev",
+    "compile:main": "electron-webpack main",
+    "compile:renderer": "next build src/client && next export src/client -o dist/renderer",
+    "compile": "yarn compile:main | yarn compile:renderer",
+    "build:app": "build && build --dir",
+    "build": "rimraf dist && yarn compile && rimraf dist/client && yarn build:app "
+  },
+  "build": {
+    "productName": "NextElectron",
+    "appId": "build.electron.next_electron",
+    "files": [
+      "!node_modules/deep-diff/releases{,/**/*}",
+      "!node_modules/bluebird/js/browser{,/**/*}",
+      "!node_modules/source-map-support/**/*",
+      "node_modules/source-map-support/source-map-support.js"
+    ]
+  }
+}
