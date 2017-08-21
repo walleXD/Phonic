@@ -8,7 +8,7 @@ class MyDocument extends Document {
     return (
       <html lang='en' dir='ltr'>
         <Head>
-          <title>My page</title>
+          <title>Phonic</title>
           <meta charSet='utf-8' />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -25,10 +25,14 @@ class MyDocument extends Document {
           <link rel='manifest' href='/static/manifest.json' />
           {/* PWA primary color */}
           <meta name='theme-color' content={context.theme.palette.primary[500]} />
+          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500'
           />
+          <link
+            href='https://fonts.googleapis.com/icon?family=Material+Icons'
+            rel='stylesheet' />
         </Head>
         <body>
           <Main />

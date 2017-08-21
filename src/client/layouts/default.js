@@ -1,8 +1,21 @@
 import React from 'react'
+import Head from 'next/head'
 
-const DefaultLayout = props =>
+import { node, string } from 'prop-types'
+
+const DefaultLayout = ({ children, title }) =>
   <div>
-    {props.children}
+    <Head>
+      <title>{ title ? `${title} - Phonic` : 'Phonic'}</title>
+    </Head>
+    <main>
+      {children}
+    </main>
   </div>
+
+DefaultLayout.propTypes = {
+  children: node,
+  title: string
+}
 
 export default DefaultLayout
