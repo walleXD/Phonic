@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "electron": "^1.7.5",
@@ -18,6 +19,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.2.1",
     "eslint-plugin-standard": "^3.0.1",
+    "material-ui": "next",
     "next": "^3.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -31,8 +33,7 @@
     "source-map-support": "^0.4.16"
   },
   "scripts": {
-    "test": "NODE_ENV=production electron dist/main/main.js/",
-    "dev": "electron-webpack dev",
+    "dev": "rimraf dist && electron-webpack dev",
     "compile:main": "electron-webpack main",
     "compile:renderer": "next build src/client && next export src/client -o dist/renderer",
     "compile": "yarn compile:main | yarn compile:renderer",
@@ -40,8 +41,8 @@
     "build": "rimraf dist && yarn compile && rimraf dist/client && yarn build:app "
   },
   "build": {
-    "productName": "NextElectron",
-    "appId": "build.electron.next_electron",
+    "productName": "Phonic",
+    "appId": "build.electron.phonic",
     "files": [
       "!node_modules/deep-diff/releases{,/**/*}",
       "!node_modules/bluebird/js/browser{,/**/*}",

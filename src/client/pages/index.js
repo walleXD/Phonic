@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const IndexPage = () => <h1>Hello</h1>
+import withMaterialRoot from '../lib/materialRoot'
+
+@withMaterialRoot
+class IndexPage extends Component {
+  render = () => <h1>Hello</h1>
+}
 
 export default IndexPage
