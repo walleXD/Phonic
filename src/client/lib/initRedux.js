@@ -6,8 +6,9 @@ import reducers from '../reducers'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
-console.log('isDev: ', isDev)
-const prodMiddlewares = [thunk]
+const prodMiddlewares = [
+  thunk
+]
 const devMiddlewares = [
   require('redux-logger').default,
   require('redux-immutable-state-invariant').default()
@@ -18,11 +19,12 @@ const middlewares = isDev
   : prodMiddlewares
 
 export const initStore = (initialState = {}) => {
-  return createStore(
+  const store = createStore(
     reducers,
     initialState,
     composeWithDevTools(
       applyMiddleware(...middlewares)
     )
   )
+  return store
 }

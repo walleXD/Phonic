@@ -7,13 +7,21 @@ import { BrowserWindow, app } from 'electron'
 import isDev from 'electron-is-dev'
 import prepareNext from 'electron-next'
 import windowStateKeeper from 'electron-window-state'
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer'
+
+require('electron-debug')({showDevTools: true})
 
 let mainWindow
 let firstLoad = true
 
 const createMainWindow = async () => {
-  if (firstLoad) {
+  if (firstLoad && isDev) {
     await prepareNext('./src/client')
+    await installExtension([
+      REACT_DEVELOPER_TOOLS,
+      REDUX_DEVTOOLS
+    ])
+    require('devtron').install()
     firstLoad = false
   }
 
